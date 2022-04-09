@@ -1,7 +1,10 @@
 import React from 'react';
 import img from '../img/1.jpg';
+import { Footer } from './Footer';
+import { HeaderUsers } from './HeaderUsers';
 export const Contact = () => {
     return <>
+        <HeaderUsers />
         <section class="tm-welcome-section">
             <div class="container tm-position-relative">
                 <div class="tm-lights-container">
@@ -47,8 +50,6 @@ export const Contact = () => {
                 </section>
             </div>
         </div>
-
-
-
+        <Footer />
     </>
 }

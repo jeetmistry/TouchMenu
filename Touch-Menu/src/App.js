@@ -1,20 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Home } from './components/Home.js';
-import { Menu } from './components/menu.js';
-import { Contact } from './components/contact.js';
-import { Login } from './components/login.js';
-import { Register } from './components/register';
-import {Base} from './components/base';
+import { Menu } from './components/Menu.js';
+import { Contact } from './components/Contact.js';
+import { Login } from './components/Login.js';
+import { Register } from './components/Register';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { RestaurantHome } from './components/RestaurantHome';
+import { Cart } from './components/Cart';
+import { Profile } from './components/Profile';
 
 function App() {
-  const [tabId, setTabId] = useState(0)
 
   return (
-    <Base setTabId = {setTabId}>
-     {tabId == 0 ? <Home/> : tabId == 1 ? <Menu/> : tabId == 2 ? <Contact/> : tabId == 3 ? <Login/> : tabId == 4 ? <Register/> : null }
-    </Base>
+    <>
+
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home />}></Route>
+          <Route exact path="/home" element={<Home />}></Route>
+          <Route exact path="/menu" element={<Menu />}></Route>
+          <Route exact path="/contact" element={<Contact />}></Route>
+          <Route exact path="/login" element={<Login />}></Route>
+          <Route exact path="/Register" element={<Register />}></Route>
+          <Route exact path="/cart" element={<Cart />}></Route>
+          <Route exact path="/restaurantHome" element={<RestaurantHome />}></Route>
+          <Route exact path="/restaurantMenu" element={<Register />}></Route>
+          <Route exact path="/profile" element={<Profile />}></Route>
+          <Route exact path="/qrcode" element={<Register />}></Route>
+
+        </Routes>
+      </Router>
+    </>
   );
 }
 
