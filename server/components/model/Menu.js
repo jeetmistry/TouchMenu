@@ -7,7 +7,7 @@ const menuSchema = mongoose.Schema({
     item_name : {
         type : String
     },
-    item_descripton : {
+    item_description : {
         type : String
     },
     item_rating : {

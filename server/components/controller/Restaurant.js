@@ -92,3 +92,12 @@ exports.registerRestaurant = async (req, res) => {
         res.json(context);
     }
 }
+
+exports.listRestaurants = async(req,res)=>{
+  try{
+    const response = await Restaurant.find();
+    res.json(response);
+  }catch(err){
+    console.log(err);
+  }
+}

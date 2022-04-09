@@ -42,17 +42,15 @@ exports.showMenu = async(req,res) =>{
 }
 
 //get veg/non veg menu items 
-//get all items of a particular restaurant
 exports.showCategory = async(req,res) =>{
     try{
-        console.log(req.params.id)
         const data = await Menu.find({restaurant_id : req.params.id,item_type: req.params.type});
-        if(data){
+        if(data.length>0){
             console.log("Showing Menu items");
             res.json(data);
         }else{
             context = {"message" : "No Menu Items found"}
-            res.json()
+            res.json(context)
         }
     }catch(err){
         console.log(err);
@@ -71,6 +69,30 @@ exports.deleteMenuItem = async(req,res)=>{
         console.log(response);
         const context= {"message" :"Menu Item Deleted Successfully"};
         res.json(context);
+    }catch(err){
+        console.log(err);
+    }
+}
+
+//update item price and description
+exports.updateItem = async(req,res)=>{
+    try{
+        const id = req.body.id;
+        const oldItem = await Menu.findById({_id:id});
+        const price = oldItem.item_price;
+        const description = oldItem.item_description;
+
+        let new_price = req.body.price;
+        let new_description = req.body.description
+        if(new_price===""){
+            new_price=price;
+        }
+        if(new_description===""){
+            new_description = description;
+        }
+        const response = await Menu.findOneAndUpdate({_id:id},{item_price:new_price,item_description:new_description});
+        res.json(response);
+
     }catch(err){
         console.log(err);
     }
