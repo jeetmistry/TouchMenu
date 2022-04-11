@@ -22,7 +22,7 @@ export const Home = () => {
     const response = await API.get("/restaurant/showRestaurants");
     setRestaurant(response.data);
     console.log(response.data);
-  }, [])
+  }, [restaurant])
 
   return <>
     <HeaderUsers />

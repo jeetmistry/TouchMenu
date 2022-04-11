@@ -10,6 +10,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { RestaurantHome } from './components/RestaurantHome';
 import { Cart } from './components/Cart';
 import { Profile } from './components/Profile';
+import { ResMenu } from './components/ResMenu';
+import { QrCode } from './components/QrCode';
 
 function App() {
 
@@ -28,7 +30,8 @@ function App() {
           <Route exact path="/restaurantHome" element={<RestaurantHome />}></Route>
           <Route exact path="/restaurantMenu" element={<Register />}></Route>
           <Route exact path="/profile" element={<Profile />}></Route>
-          <Route exact path="/qrcode" element={<Register />}></Route>
+          <Route exact path="/qrcode" element={<QrCode />}></Route>
+          <Route exact path="/:restaurant" element={<ResMenu />}></Route>
 
         </Routes>
       </Router>

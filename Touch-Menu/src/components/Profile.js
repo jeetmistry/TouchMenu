@@ -18,7 +18,8 @@ export const Profile = () => {
             id:restaurant_id,
             name:name,
             tables:tables,
-            address:address
+            address:address,
+            url:`http://localhost:3000/restaurant_${restaurant_id}`
         }
         const response = await API.put("/restaurant/update",data);
         console.log(response.data);

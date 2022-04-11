@@ -1,7 +1,9 @@
 import React from "react";
+import { ResHeader } from "./ResHeader";
 
 export const Cart = () => {
     return <>
+    <ResHeader/>
         <div className="tm-main-section light-gray-bg">
             <div className="container" id="main">
                 <section className="tm-section tm-section-margin-bottom-0 row">

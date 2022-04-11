@@ -127,7 +127,7 @@ exports.updateRestaurant = async (req, res) => {
       data.tables = 0;
     }
 
-    const response = await Restaurant.findOneAndUpdate({_id:data.id},{restaurant_total_tables:data.tables,restaurant_name:data.name,restaurant_address:data.address})
+    const response = await Restaurant.findOneAndUpdate({_id:data.id},{restaurant_total_tables:data.tables,restaurant_name:data.name,restaurant_address:data.address,restaurant_url:data.url})
 
     res.json(response);
   } catch (err) {

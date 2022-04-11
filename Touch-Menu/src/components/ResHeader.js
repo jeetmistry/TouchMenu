@@ -2,7 +2,7 @@ import React from 'react';
 import img from '../img/1.jpg';
 
 
-export const HeaderUsers = () => {
+export const ResHeader = () => {
   return <>
     <div className="tm-top-header">
       <div classNameName="container">
@@ -19,9 +19,6 @@ export const HeaderUsers = () => {
               <ul>
                 <li><a href="/home" className="active">Home</a></li>
                 <li><a href="/cart">Cart</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
-                <li><a href="/contact">Contact</a></li>
               </ul>
             </nav>
           </div>

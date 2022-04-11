@@ -21,7 +21,7 @@ export const HeaderRestaurant = () => {
                                 <li><a href="/restaurantMenu">Menu</a></li>
                                 <li><a href="/profile">Profile</a></li>
                                 <li><a href="/qrcode">Show Tables</a></li>
-                                <li><a href="/logout">Logout</a></li>
+                                <li><a href="/home">Logout</a></li>
                             </ul>
                         </nav>
                     </div>

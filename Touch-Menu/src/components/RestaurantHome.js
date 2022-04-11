@@ -57,6 +57,7 @@ export const RestaurantHome = () => {
                         <h2 className="gold-text">Restaurant Orders : {profile.restaurant_total_orders}</h2>
                         <h2 className="gold-text">Number of Tables : {profile.restaurant_total_tables}</h2>
                         <h2 className="gold-text">Number of Tables Occupied: {profile.restaurant_tables_occupied}</h2>
+                        <h2 className="gold-text">Restaurant Url: {profile.restaurant_url}</h2>
                         <a href="/profile" className="tm-more-button margin-top-30">Edit Profile</a>
                     </div>
                     <div className="col-lg-3 col-md-3 col-sm-4 tm-welcome-img-container">
