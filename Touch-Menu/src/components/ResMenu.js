@@ -10,7 +10,7 @@ export const ResMenu = () => {
 
     const [menu, setMenu] = useState([]);
     const [restaurant, setRestaurant] = useState([]);
-
+    const [quantity,setQuantity] = useState(1);
     const getMenu = async () => {
         localStorage.clear();
         let res = window.location.href
@@ -36,6 +36,23 @@ export const ResMenu = () => {
         const restaurant_id = localStorage.getItem("restaurant_id");
         const response = await API.get(`/menu/show/${restaurant_id}/${props}`);
         setMenu(response.data);
+    }
+
+    const addToCart = async(props)=>{
+        console.log(props);
+        const data = {
+            restaurant_id:props.restaurant_id,
+            item_id:props._id,
+            item_image:props.item_image,
+            table_id:localStorage.getItem("table_no"),
+            quantity:quantity,
+            total_amount:props.item_price,
+            item_name:props.item_name,
+            item_image : props.item_image
+        }
+
+        const response = await API.post('/cart/addCart',data);
+        alert(response.data.message);
     }
     return <>
         <ResHeader />
@@ -110,10 +127,14 @@ export const ResMenu = () => {
                                                 <p><b>Item Description : </b> {item.item_description}</p>
                                                 <p><b>Item Type : </b>{item.item_type}</p>
                                                 <p><b>Item Rating : </b>{item.item_rating}</p>
-                                                <b>Select Quantity : </b><input type="number" placeholder='Quantity' />
+                                                <b>Select Quantity : </b><input type="number" placeholder='Quantity' onChange={(e)=>setQuantity(e.target.value)}/>
                                             </div>
                                             <div class="tm-product-price">
-                                                <a href="#" class="tm-product-price-link tm-handwriting-font"><span class="tm-product-price-currency">&#8377;</span>{item.item_price}</a>
+                                                <a href="" class="tm-product-price-link tm-handwriting-font" onClick={(e)=>{
+                                                    e.preventDefault();
+                                                    addToCart(item);
+                                                }
+                                                }><span class="tm-product-price-currency">&#8377;</span>{item.item_price}</a>
                                             </div>
                                         </div>
                                     </>
@@ -128,7 +149,7 @@ export const ResMenu = () => {
                                         Pasta is a type of food made from a mixture of flour, eggs, and water that is formed into different shapes and then boiled. </p>
                                 </div>
                                 <div class="tm-product-price">
-                                    <a href="#" class="tm-product-price-link tm-handwriting-font"><span class="tm-product-price-currency">&#8377;</span>200</a>
+                                    <a href="" class="tm-product-price-link tm-handwriting-font"><span class="tm-product-price-currency">&#8377;</span>200</a>
                                 </div>
                             </div>
                             <div class="tm-product">

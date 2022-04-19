@@ -9,9 +9,9 @@ router.post("/addcart",addCart);
 router.get("/showcart/:id/:table_id",showCart);
 
 //remove particular item from the cart
-router.get("/removeCart/:restaurant_id/:item_id/:table_id",removeItemFromCart);
+router.get("/removeCart/:id",removeItemFromCart);
 
 // delete whole cart of a particular table
-router.get("/deletecart//:restaurant_id/:table_id",deleteCart);
+router.get("/deletecart/:restaurant_id/:table_id",deleteCart);
 
 module.exports = router

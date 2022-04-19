@@ -19,6 +19,7 @@ export const ResHeader = () => {
               <ul>
                 <li><a href="/home" className="active">Home</a></li>
                 <li><a href="/cart">Cart</a></li>
+                <li><a href="/userorder">Order</a></li>
               </ul>
             </nav>
           </div>

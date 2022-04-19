@@ -20,3 +20,15 @@ exports.placeOrder = async(req,res)=>{
     const response = await newOrder.save();
     res.json(response);
 }
+
+exports.getOrders = async(req,res)=>{
+    const id = req.params.restaurant_id;
+    const table = req.params.table_id;
+    try{
+        const response = await Orders.find({restaurant_id:id,table_id:table});
+        res.json(response);
+    }catch(err){
+        console.log(err);
+        res.json({"message": "error"});
+    }
+}

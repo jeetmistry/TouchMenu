@@ -12,6 +12,8 @@ import { Cart } from './components/Cart';
 import { Profile } from './components/Profile';
 import { ResMenu } from './components/ResMenu';
 import { QrCode } from './components/QrCode';
+import { AddMenu } from './components/AddMenu';
+import { UserOrder } from './components/UserOrder';
 
 function App() {
 
@@ -28,10 +30,12 @@ function App() {
           <Route exact path="/Register" element={<Register />}></Route>
           <Route exact path="/cart" element={<Cart />}></Route>
           <Route exact path="/restaurantHome" element={<RestaurantHome />}></Route>
-          <Route exact path="/restaurantMenu" element={<Register />}></Route>
+          <Route exact path="/restaurantMenu" element={<AddMenu />}></Route>
           <Route exact path="/profile" element={<Profile />}></Route>
           <Route exact path="/qrcode" element={<QrCode />}></Route>
           <Route exact path="/:restaurant" element={<ResMenu />}></Route>
+          <Route exact path="/userorder" element={<UserOrder />}></Route>
+
 
         </Routes>
       </Router>

@@ -7,8 +7,9 @@ exports.addCart = async(req,res)=>{
         item_id:data.item_id,
         table_id:data.table_id,
         total_amount:data.total_amount*data.quantity,
-        quantity:data.quantity
-        
+        quantity:data.quantity,
+        image:data.item_image,
+        item_name : data.item_name
     }
 
     const newCartItem = new Cart(cart);
@@ -40,8 +41,8 @@ exports.removeItemFromCart = async(req,res)=>{
     const data = req.params;
     console.log(data)
     try{
-        const response = await Cart.deleteOne({restaurant_id:data.restaurant_id,item_id:data.item_id,table_id:data.table_id});
-        res.json(response);
+        const response = await Cart.deleteOne({_id:data.id});
+        res.json({message:"Item Removed From Cart"});
     }catch(err){
         console.log(err);
         res.json({"message":"error"})
