@@ -1,8 +1,11 @@
 const Menu = require("../model/Menu");
+const Restaurant = require("../model/Restaurant");
 const natural = require('natural');
 const aposToLexForm = require('apos-to-lex-form');
 const SpellCorrector = require('spelling-corrector');
 const SW = require('stopword');
+
+const axios = require('axios');
 
 exports.analyseReview = (req,res)=>{
     const review = req.body.review;
@@ -42,4 +45,58 @@ exports.analyseReview = (req,res)=>{
     const analysis = analyzer.getSentiment(filteredReview);
 
     res.status(200).json({ analysis });
+}
+
+
+//submit review to sentiment analysis and perform all the ratings and review task in one request
+exports.submitReview = async(req,res)=>{
+    const data = req.body;
+    console.log(data);
+    try{
+        for(ratings in data.ratings){
+            console.log(ratings);
+            const menu = await Menu.findOne({_id:ratings});
+            console.log(menu);
+
+            let old_ratings = menu.item_rating;
+            let old_total_rating = menu.total_item_rating;
+            let new_total_rating = old_total_rating+1;
+            let new_rating = old_ratings + data.ratings[ratings];
+            new_rating = (new_rating/new_total_rating).toFixed(2);
+
+            await Menu.updateOne({_id:ratings},{item_rating:new_rating,total_item_rating:new_total_rating});
+        }
+
+        //adding review for restaurant
+        let sentiment_text = {
+            text : data.review
+        }
+
+        //get the restaurant details
+        const restaurant = await Restaurant.findOne({_id:data.restaurant_id});
+        console.log(restaurant);
+        //request to api for getting the sentiment 
+        const sentiment = await axios.post("https://sentim-api.herokuapp.com/api/v1/",sentiment_text);
+
+        console.log(sentiment.data)
+        //response will be in response.data.result.type
+        let res_pos_review = restaurant.restaurant_positive_reviews;
+        let res_tot_review = restaurant.restaurant_total_reviews;
+        console.log(res_pos_review,res_tot_review)
+        let rating = 0;
+        if(sentiment.data.result.type=="positive"){
+            rating+=1
+            res_pos_review+=1
+        }
+        res_tot_review+=1;
+
+        let new_rating = ((res_pos_review/res_tot_review)*5).toFixed(2);
+        await Restaurant.updateOne({_id:data.restaurant_id},{restaurant_total_reviews:res_tot_review,restaurant_positive_reviews:res_pos_review,restaurant_rating:new_rating});
+    
+        res.json({message:"Thanks for Submitting your Review"})
+    }catch(err){
+        console.log(err);
+        res.json({message:"error"});
+    }
+    
 }

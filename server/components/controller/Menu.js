@@ -26,7 +26,7 @@ exports.addMenu = async(req,res)=>{
 exports.showMenu = async(req,res) =>{
     try{
         console.log(req.params.id)
-        const data = await Menu.find({restaurant_id : req.params.id});
+        const data = await Menu.find({restaurant_id : req.params.id}).sort({item_rating:-1});
         if(data){
             console.log("Showing Menu items");
             res.json(data);
@@ -44,7 +44,7 @@ exports.showMenu = async(req,res) =>{
 //get veg/non veg menu items 
 exports.showCategory = async(req,res) =>{
     try{
-        const data = await Menu.find({restaurant_id : req.params.id,item_type: req.params.type});
+        const data = await Menu.find({restaurant_id : req.params.id,item_type: req.params.type}).sort({item_rating:-1});
         if(data.length>0){
             console.log("Showing Menu items");
             res.json(data);

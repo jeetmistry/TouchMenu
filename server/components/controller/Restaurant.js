@@ -95,7 +95,7 @@ exports.registerRestaurant = async (req, res) => {
 
 exports.listRestaurants = async (req, res) => {
   try {
-    const response = await Restaurant.find();
+    const response = await Restaurant.find().sort({restaurant_rating:-1});
     res.json(response);
   } catch (err) {
     console.log(err);
