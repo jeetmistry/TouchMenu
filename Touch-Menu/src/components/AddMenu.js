@@ -135,6 +135,7 @@ export const AddMenu = () => {
                                             <p>{item.item_description} </p>
                                             <p>Price : <i><b>Rs. {item.item_price}</b></i></p>
                                             <p>Type : <i><b>{item.item_type}</b></i></p>
+                                            <p>Rating : <i><b>{item.item_rating}</b></i></p>
                                             <div className="order-now-container">
                                                 <a href="" className="order-now-link tm-handwriting-font" onClick={async() => {
                                                     const response = await API.delete(`/menu/delete/${item._id}`);

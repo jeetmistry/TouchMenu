@@ -18,6 +18,7 @@ export const HeaderRestaurant = () => {
                         <nav className="tm-nav">
                             <ul>
                                 <li><a href="/restaurantHome" className="active">Home</a></li>
+                                <li><a href="/restaurantOrders">Orders</a></li>
                                 <li><a href="/restaurantMenu">Menu</a></li>
                                 <li><a href="/profile">Profile</a></li>
                                 <li><a href="/qrcode">Show Tables</a></li>

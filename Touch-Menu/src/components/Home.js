@@ -79,7 +79,8 @@ export const Home = () => {
                     <div className="tm-popular-item-description">
                       <h3 className="tm-handwriting-font tm-popular-item-title"><span className="tm-handwriting-font bigger-first-letter"></span>{item.restaurant_name}</h3>
                       <hr className="tm-popular-item-hr" />
-                      <p>An Americano is an espresso drink made with hot water and espresso, also called a Caffe Americano. The drink can be made with either one or two shots of espresso, and varying ratios of water. </p>
+                      <p>An Americano is an espresso drink made with hot water and espresso, also called a Caffe Americano.</p>
+                      <p>Rating : <b>{item.restaurant_rating}</b></p>
                       <div className="order-now-container">
                         <a href="#" className="order-now-link tm-handwriting-font" onClick={() => {
                           handleRestaurantEntry(item)

@@ -84,16 +84,20 @@ exports.submitReview = async(req,res)=>{
         let res_tot_review = restaurant.restaurant_total_reviews;
         console.log(res_pos_review,res_tot_review)
         let rating = 0;
+        let message = "";
         if(sentiment.data.result.type=="positive"){
+            message = "Thank you for your positive review, please visit again for more delicious food"
             rating+=1
             res_pos_review+=1
+        }else{
+            message = "We are really sorry for your experience, we hope to serve better next time"
         }
         res_tot_review+=1;
 
         let new_rating = ((res_pos_review/res_tot_review)*5).toFixed(2);
         await Restaurant.updateOne({_id:data.restaurant_id},{restaurant_total_reviews:res_tot_review,restaurant_positive_reviews:res_pos_review,restaurant_rating:new_rating});
     
-        res.json({message:"Thanks for Submitting your Review"})
+        res.json({message:"Thanks for Submitting your Review - "+message})
     }catch(err){
         console.log(err);
         res.json({message:"error"});
