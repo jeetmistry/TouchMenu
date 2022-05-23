@@ -12,14 +12,14 @@ export const Profile = () => {
 
     const handleUpdate = async()=>{
 
-        const API = axios.create({ baseURL: 'http://localhost:4000' });
+        const API = axios.create({ baseURL: 'https://touchmenu.herokuapp.com' });
         console.log(name,tables,address);
         const data = {
             id:restaurant_id,
             name:name,
             tables:tables,
             address:address,
-            url:`http://localhost:3000/restaurant_${restaurant_id}`
+            url:`http://localhost:3000/restaurant_${restaurant_id}` //need to change this
         }
         const response = await API.put("/restaurant/update",data);
         console.log(response.data);

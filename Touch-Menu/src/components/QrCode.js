@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { HeaderRestaurant } from "./HeaderRestaurant";
 import qrcode from 'qrcode';
 import axios from "axios";
-const API = axios.create({ baseURL: 'http://localhost:4000' });
+const API = axios.create({ baseURL: 'https://touchmenu.herokuapp.com' });
 
 export const QrCode = () => {
 

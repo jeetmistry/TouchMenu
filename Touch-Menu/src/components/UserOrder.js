@@ -4,7 +4,7 @@ import axios from "axios";
 import {StarRatingInput,StarRating} from 'react-star-rating-input';
 import Rating from 'react-rating';
 import "./handlereview.css";
-const API = axios.create({ baseURL: 'http://localhost:4000' });
+const API = axios.create({ baseURL: 'https://touchmenu.herokuapp.com' });
 export const UserOrder = () => {
     const [order, setOrder] = useState([]);
     var rating = {};

@@ -9,7 +9,7 @@ export const RestaurantHome = () => {
 
 
     const [profile, setProfile] = useState([]);
-    const API = axios.create({ baseURL: 'http://localhost:4000' });
+    const API = axios.create({ baseURL: 'https://touchmenu.herokuapp.com' });
     const getprofile = async (e) => {
         const restaurant_id = localStorage.getItem("restaurant_id");
         const restaurant_name = localStorage.getItem("restaurant_name");

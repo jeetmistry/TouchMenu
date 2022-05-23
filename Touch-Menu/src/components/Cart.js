@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ResHeader } from "./ResHeader";
 import axios from "axios";
-const API = axios.create({ baseURL: 'http://localhost:4000' });
+const API = axios.create({ baseURL: 'https://touchmenu.herokuapp.com' });
 export const Cart = () => {
     const [cart, setCart] = useState([]);
     const [final_amount, setAmount] = useState();

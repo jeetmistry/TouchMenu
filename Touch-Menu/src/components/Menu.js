@@ -4,7 +4,7 @@ import { Footer } from './Footer';
 import { HeaderUsers } from './HeaderUsers';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-const API = axios.create({ baseURL: 'http://localhost:4000' });
+const API = axios.create({ baseURL: 'https://touchmenu.herokuapp.com' });
 export const Menu = () => {
 
   const [menu, setMenu] = useState([]);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ResHeader } from "./ResHeader";
 import axios from "axios";
 import { HeaderRestaurant } from "./HeaderRestaurant";
-const API = axios.create({ baseURL: 'http://localhost:4000' });
+const API = axios.create({ baseURL: 'https://touchmenu.herokuapp.com' });
 export const RestaurantOrder = () => {
     const [order, setOrder] = useState([]);
     // const table_no = localStorage.getItem("table_no");

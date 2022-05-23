@@ -2,7 +2,7 @@ import React from "react";
 import { HeaderRestaurant } from "./HeaderRestaurant";
 import { useState, useEffect } from "react";
 import axios from "axios";
-const API = axios.create({ baseURL: 'http://localhost:4000' });
+const API = axios.create({ baseURL: 'https://touchmenu.herokuapp.com' });
 export const AddMenu = () => {
     const restaurant_name = localStorage.getItem("restaurant_name");
     const restaurant_id = localStorage.getItem("restaurant_id");
@@ -16,7 +16,7 @@ export const AddMenu = () => {
 
     const handleAddMenu = async () => {
 
-        const API = axios.create({ baseURL: 'http://localhost:4000' });
+        const API = axios.create({ baseURL: 'https://touchmenu.herokuapp.com' });
         const data = {
             item_type: item_type,
             item_name: item_name,

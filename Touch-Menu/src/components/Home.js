@@ -7,7 +7,7 @@ import axios from 'axios';
 export const Home = () => {
 
   const [restaurant, setRestaurant] = useState([])
-  const API = axios.create({ baseURL: 'http://localhost:4000' });
+  const API = axios.create({ baseURL: 'https://touchmenu.herokuapp.com' });
 
   const handleRestaurantEntry = async (props) => {
     const data = props;
